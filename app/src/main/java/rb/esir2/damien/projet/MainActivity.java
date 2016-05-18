@@ -34,15 +34,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
     boolean etat_server;
     boolean etat_knx;
 
+    // Création d'un premier webSocket et des informations de connexion
     private final WebSocketConnection mWebSocket = new WebSocketConnection();
     private static final String TAG = "projet.RB.ESIR2";
     private final String URI = "ws://192.168.1.114:8080/ControleMaison-RB/server";
+
+    // Configuration de chaque méthode du webSocket
     private WebSocketHandler webSocketHandler = new WebSocketHandler() {
         @Override
         public void onOpen() {
             Toast.makeText(getApplicationContext(), "Ouverture de la connexion", Toast.LENGTH_SHORT).show();
             Log.d(TAG, "Status: Connected to " + URI);
 
+            // Modification de l'écriture du bouton de connexion, changement de l'icone de connexion
             if (mWebSocket.isConnected()) {
                 connexion_serveur.setText(R.string.connecte);
                 etat_server = true;
@@ -55,9 +59,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         public void onTextMessage(String msg) {
             String[] tab = msg.split("[,;:]+");
 
+            // Dans le cas où c'est un envoi de toutes les données (1er envoi), utilisation d'une autre méthode
             if (tab[0].equals("alldatas")) {
                 initData(tab);
             } else {
+                // Pour chaque message reçu, on traite pour mettre à jour l'interface
                 switch (tab[0]) {
                     case "lampe":
                         switch (tab[1]) {
@@ -185,6 +191,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         switch(v.getId()) {
 
+            // Bouton pour activer , désactiver le chenillard
             case R.id.button_chenillard:
                 if(etat_chenillard && etat_server){
                     mWebSocket.sendTextMessage("chenillard:off");
@@ -195,33 +202,42 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 etat_chenillard = !etat_chenillard;
                 break;
 
+            // Bouton pour augmenter la vitesse
             case R.id.vitesse_plus:
                 if(etat_server){
                     mWebSocket.sendTextMessage("vitesse:plus");
                 }
                 break;
 
+            // Bouton pour diminuer la vitesse
             case R.id.vitesse_moins:
                 if(etat_server){
                     mWebSocket.sendTextMessage("vitesse:moins");
                 }
                 break;
 
+            // Bouton pour changer au motif 1
             case R.id.motif1:
                 if(etat_server){
                     mWebSocket.sendTextMessage("motif:1");
                 }
                 break;
+
+            // Bouton pour changer au motif 2
             case R.id.motif2:
                 if(etat_server){
                     mWebSocket.sendTextMessage("motif:2");
                 }
                 break;
+
+            // Bouton pour changer au motif 3
             case R.id.motif3:
                 if(etat_server){
                     mWebSocket.sendTextMessage("motif:3");
                 }
                 break;
+
+            // Bouton pour changer à un motif aléatoire
             case R.id.motif_random:
                 Random rand = new Random();
                 int nb = rand.nextInt(3);
@@ -229,6 +245,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     mWebSocket.sendTextMessage("motif:"+(nb+1));
                 }
                 break;
+
+            // Bouton de connexion, déconnexion au serveur
             case R.id.button_server:
                 if(etat_server){
                     mWebSocket.disconnect();
@@ -242,6 +260,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 }
                 break;
 
+            // Bouton de connexion, déconnexion à la maquette KNX
             case R.id.button_knx:
                 if(etat_knx && etat_server){
                     mWebSocket.sendTextMessage("knx:deconnect");
@@ -254,6 +273,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     }
 
+    // Méthode pour initialiser l'interface au démarrage de l'application
     public void initData(String[] tab){
         for(int i=0; i<tab.length; i++){
             switch (tab[i]) {
