@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Projet</string>
+    <string name="etat_connexions">Etat connexions</string>
+    <string name="deconnecte">Déconnecté</string>
+    <string name="connecte">Connecté</string>
+    <string name="activation_chenillard">Activation du chenillard</string>
+    <string name="activer">Activer</string>
+    <string name="desactiver">Désactiver</string>
+</resources>

@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fond"
+    tools:context="rb.esir2.damien.projet.MainActivity">
+
+    <!-- Premier grand linear layout -->
+    <LinearLayout
+        android:id="@+id/linear_general"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <!-- Premier layout pour les lampes -->
+
+        <LinearLayout
+            android:id="@+id/linear_lampe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/lampe1"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:contentDescription="lampe1"
+                android:layout_weight="1"
+                android:layout_marginLeft="25dp"
+                android:src="@drawable/lumiere_eteinte"/>
+
+            <ImageView
+                android:id="@+id/lampe2"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:contentDescription="lampe1"
+                android:layout_weight="1"
+                android:src="@drawable/lumiere_eteinte"/>
+
+            <ImageView
+                android:id="@+id/lampe3"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:contentDescription="lampe1"
+                android:layout_weight="1"
+                android:src="@drawable/lumiere_eteinte"/>
+
+            <ImageView
+                android:id="@+id/lampe4"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:contentDescription="lampe1"
+                android:layout_weight="1"
+                android:layout_marginRight="25dp"
+                android:src="@drawable/lumiere_eteinte"/>
+
+
+        </LinearLayout>
+        <!-- Fin du premier layout pour les lampes -->
+
+
+        <!-- Layout pour le cadran de la connexion -->
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:background="@drawable/connexion"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="25dp">
+
+            <!-- Premier colonne pour l'icone de connexion -->
+            <TableRow>
+                <ImageView
+                    android:id="@+id/icone_connexion"
+                    android:contentDescription="icone de connexion"
+                    android:src="@drawable/connexion0"
+                    android:layout_margin="15dp"
+                    android:layout_height="25dp"/>
+
+                <TextView
+                    android:id="@+id/etat_connexions"
+                    android:text="@string/etat_connexions"
+                    android:textSize="16sp"
+                    android:layout_column="1"
+                    android:layout_marginTop="15dp"/>
+
+            </TableRow>
+            <!-- fin de la premiere colonnne pour la connexion -->
+
+
+            <LinearLayout
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button_server"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="55dp"
+                    android:background="@drawable/screen"/>
+
+                <Button
+                    android:id="@+id/button_knx"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="80dp"
+                    android:background="@drawable/knx"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/connexion_ecran"
+                    android:text="@string/deconnecte"
+                    android:textSize="10sp"
+                    android:textAlignment="center"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp"/>
+
+                <TextView
+                    android:id="@+id/connexion_knx"
+                    android:text="@string/deconnecte"
+                    android:textSize="10sp"
+                    android:textAlignment="center"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp" />
+
+            </LinearLayout>
+
+        </TableLayout>
+        <!-- Fin du layout pour le cadran de la connexion -->
+
+        <!-- Linear layout pour l'activation du chenillard -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/cadre_blanc"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activation_chenillard"
+                android:textAlignment="center"
+                android:layout_marginTop="15dp"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/button_chenillard"
+                android:layout_width="200dp"
+                android:layout_height="35dp"
+                android:text="@string/activer"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:background="#3194B3"/>
+
+
+        </LinearLayout>
+        <!-- Fin du linear layout pour l'activation du chenillard -->
+
+        <!-- Dernier layout pour la vitesse et le motif -->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Table layout pour la vitesse -->
+            <TableLayout
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:text="Vitesse"
+                    android:background="#FFFFFF"
+                    android:layout_height="40dp"
+                    android:textAlignment="center"
+                    android:gravity="center_vertical"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    />
+
+                <TableRow>
+
+                    <Button
+                        android:id="@+id/vitesse_plus"
+                        android:background="@drawable/plus_vitesse"
+                        android:layout_width="65dp"
+                        android:layout_height="70dp"/>
+
+                    <Button
+                        android:id="@+id/vitesse_moins"
+                        android:background="@drawable/moins_vitesse"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"/>
+
+
+                </TableRow>
+
+            </TableLayout>
+            <!-- Fin du table layout pour la vitesse -->
+
+            <!-- Table layout pour le motif -->
+            <TableLayout
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="35dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:text="Motif"
+                    android:background="#FFFFFF"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    />
+
+                <!-- Boutons de choix -->
+                <TableRow>
+                    <Button
+                        android:id="@+id/motif1"
+                        android:background="@drawable/motif1"
+                        android:layout_width="65dp"
+                        android:layout_height="35dp"/>
+
+                    <Button
+                        android:id="@+id/motif2"
+                        android:background="@drawable/motif2"
+                        android:layout_width="70dp"
+                        android:layout_height="35dp"/>
+                </TableRow>
+
+                <TableRow>
+                    <Button
+                        android:id="@+id/motif3"
+                        android:background="@drawable/motif3"
+                        android:layout_width="65dp"
+                        android:layout_height="35dp"/>
+
+                    <Button
+                        android:id="@+id/motif_random"
+                        android:background="@drawable/motif_random"
+                        android:layout_width="70dp"
+                        android:layout_height="35dp"/>
+                </TableRow>
+                <!-- Fin des boutons de choix de motif -->
+
+            </TableLayout>
+            <!-- Fin du table layout pour le motif -->
+
+        </LinearLayout>
+        <!-- Fin du dernier layout pour la vitesse et le motif -->
+
+    </LinearLayout>
+    <!-- Fin du grand linear layout -->
+</RelativeLayout>
